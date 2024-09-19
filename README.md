@@ -6,7 +6,7 @@ A easy zip viewer and unzip tool.<br>
 ## Requirement
 **Java**<br>
 **JavaFX** ([SDK Download](https://gluonhq.com/products/javafx/))<br>
-**jtar** ([Link](https://code.google.com/p/jtar/))(**Apache License 2.0**)
+**Apache Common Compress** ([Link](https://commons.apache.org/proper/commons-compress/index.html))(**Apache License 2.0**)
 
 ## Download
 Go to "**Release**" page.

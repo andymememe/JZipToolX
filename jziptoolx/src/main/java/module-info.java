@@ -8,8 +8,8 @@ module jziptoolx {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;
-    requires transitive javafx.graphics;
-    requires jtar;
-
+    requires transitive  javafx.graphics;
+    requires org.apache.commons.compress;
+    
     opens com.andymememe.jziptoolx to javafx.fxml, javafx.graphics;
 }

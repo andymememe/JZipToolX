@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.xeustechnologies.jtar.TarEntry;
-import org.xeustechnologies.jtar.TarInputStream;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 
 import com.andymememe.jziptoolx.treer.TreeManipulator;
 
@@ -34,12 +34,12 @@ public class TarManipulator extends ComManipulator {
     @Override
     public boolean openCom(File file) {
         boolean result = true;
-        TarInputStream tarInputStream;
+        TarArchiveInputStream tarInputStream;
         _file = file;
-        TarEntry entry;
+        TarArchiveEntry entry;
         _treeManipulator.generateRoot(_file.getName());
         try {
-            tarInputStream = new TarInputStream(new BufferedInputStream(new FileInputStream(_file)));
+            tarInputStream = new TarArchiveInputStream(new BufferedInputStream(new FileInputStream(_file)));
             while ((entry = tarInputStream.getNextEntry()) != null) {
                 /* Fix Chinese Error */
                 char[] intFilename = entry.getName().toCharArray();
@@ -67,11 +67,11 @@ public class TarManipulator extends ComManipulator {
         boolean result = true;
         int count;
         byte[] data = new byte[2048];
-        TarInputStream tarInputStream;
+        TarArchiveInputStream tarInputStream;
         BufferedOutputStream bufferOutputStream;
         try {
-            tarInputStream = new TarInputStream(new BufferedInputStream(new FileInputStream(_file)));
-            TarEntry entry;
+            tarInputStream = new TarArchiveInputStream(new BufferedInputStream(new FileInputStream(_file)));
+            TarArchiveEntry entry;
             while ((entry = tarInputStream.getNextEntry()) != null) {
                 char[] intFilename = entry.getName().toCharArray();
                 byte[] byteFilename = new byte[intFilename.length];
