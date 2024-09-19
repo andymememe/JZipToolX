@@ -70,19 +70,15 @@ public abstract class ComManipulator {
     protected File _doReplaceJob(File newFile, int replaceResult) {
         File result = newFile;
         switch (replaceResult) {
-            case 0:
+            case 0 -> {
                 result.delete(); // Delete old file
-                 {
-                    try {
-                        result.createNewFile(); // Create new file
-                    } catch (IOException ex) {
-                        result = null;
-                        Logger.getLogger(ZipManipulator.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    result.createNewFile(); // Create new file
+                } catch (IOException ex) {
+                    result = null;
+                    Logger.getLogger(ZipManipulator.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                break;
-            case 1:
-                break;
+            }
         }
         return result;
     }
